@@ -1,0 +1,63 @@
+
+Arifur Rahman 
+Systems Programming PA2
+TestPlan
+
+In order to test this program properly I needed to make a comparator and destructor for strings and ints. This made sense because it matches the way SortedL was implemented.  These functions should be implemented as follows: (-1 should show up if the left item parameter is less than right item parameter, 0 if they are both equal, and 1 otherwise).
+I have 2 SortedL functions for ints and strings.  To make sure my SLinsert works properly I have set up cases that let me know when something was inserted to the list or not.  This case analysis lets me incorporate duplicate values and reject them from being inserted again.
+SLGetItem() and SLNextItem() needed to be checked for proper functionality. Two iterators, were used  where the iterator's current node's data would be printed to the console, thus verifying that it should work.
+
+Example of testing integer sorting:
+//How mem is allocated in my main.c  and some input example
+double* test1 = (double*)malloc(sizeof(double)); double* test2 = (double*)malloc(sizeof(double));double* test3 = (double*)malloc(sizeof(double));
+    double* test4 = (double*)malloc(sizeof(double));
+    *test1 = 7.8; *test2 = 27.9; *test3 = 7.9; *test4 = 42.4; // INPUT
+    void* pointer1 = test1; void* pointer2 = test2;  void* pointer3 = test3;
+    void* pointer4 = test4;
+EXPECTED OUTPUT: 
+INSERTED
+INSERTED
+NOT INSERTED
+NOT INSERTED
+INSERTED
+INSERTED
+NOT INSERTED
+42.4
+27.9  //AS you Can see the List has been sorted correctly.
+7.9
+7.8
+
+Example of sorting strings:
+char* test5 = (char*)malloc(sizeof(char)); char* test6 = (char*)malloc(sizeof(char));
+    char* test7 = (char*)malloc(sizeof(char)); char* test8 = (char*)malloc(sizeof(char));
+    
+    test5 = "jello";
+    test6 = "apple";            //Raw inputs
+    test7 = "pharmacy";
+    test8 = "zoo";
+
+    void* pointer5 = test5;
+    void* pointer6 = test6;
+    void* pointer7 = test7;
+    void* pointer8 = test8;
+
+Expected Output:
+INSERTED
+INSERTED
+INSERTED
+INSERTED
+NOT INSERTED
+zoo
+pharmacy
+jello
+apple
+
+Then we have the iterator test along with remove test out put:
+Iterator Test zoo
+Iterator Test pharmacy
+Iterator Test jello //jello is being removed
+REMOVED
+Testing Iterator on Node that was removed jello
+zoo
+pharmacy
+apple
